@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Émeraude — салон красоты премиум-класса, Москва</title>
+<meta name="description" content="Émeraude — частный салон красоты в центре Москвы. Авторские программы ухода, косметология класса люкс, персональный сервис.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --emerald:#0d3529;
+  --emerald-deep:#082419;
+  --gold:#c3a15e;
+  --gold-soft:#d8c08a;
+  --cream:#f4eee1;
+  --cream-dim:#ece4d2;
+  --anthracite:#262b2e;
+  --ink:#1c2124;
+  --line:rgba(195,161,94,.38);
+  --line-light:rgba(195,161,94,.30);
+  --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans:'Manrope', 'Segoe UI', Arial, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  font-size:18px;
+  line-height:1.75;
+  font-weight:400;
+  color:var(--anthracite);
+  background-color:var(--cream);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* ---- matte silk texture over the whole page ---- */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+main,header,footer{position:relative;z-index:1}
+
+h1,h2,h3,.serif{font-family:var(--serif);font-weight:500;color:var(--ink)}
+.eyebrow{
+  font-size:13px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+.rule{width:64px;height:1px;background:var(--line);border:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,72px)}
+
+/* ---------- progress bar ---------- */
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:var(--gold);z-index:120;
+  transition:width .12s linear;
+}
+/* ---------- navigation ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:110;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:26px clamp(22px,5vw,72px);
+  transition:background .5s ease, padding .5s ease;
+}
+nav.scrolled{
+  background:rgba(8,36,25,.88);
+  padding:16px clamp(22px,5vw,72px);
+}
+.brand{
+  font-family:var(--serif);font-size:24px;letter-spacing:.14em;
+  color:var(--cream);text-decoration:none;
+}
+.brand em{color:var(--gold-soft);font-style:normal;font-size:13px;display:block;letter-spacing:.34em;margin-top:2px;font-family:var(--sans);font-weight:400}
+.nav-links{display:flex;gap:38px;list-style:none}
+.nav-links a{
+  color:rgba(244,238,225,.82);text-decoration:none;font-size:14px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  position:relative;padding-bottom:4px;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--gold-soft);transition:width .45s ease;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  border:1px solid rgba(216,192,138,.7);color:var(--gold-soft);
+  padding:11px 26px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;font-weight:500;transition:all .45s ease;background:transparent;
+}
+.nav-cta:hover{
+  background:var(--gold-soft);color:var(--emerald-deep);
+  border-width:2px;padding:10px 25px;
+}
+#burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+#burger span{display:block;width:26px;height:1px;background:var(--cream);margin:7px 0;transition:.4s}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--emerald-deep)}
+.hero-media{position:absolute;inset:-22% 0 0 0;will-change:transform}
+.hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:rgba(8,36,25,.42);
+}
+.hero-content{
+  position:absolute;z-index:2;left:0;right:0;bottom:0;
+  padding:0 clamp(22px,7vw,110px) clamp(64px,10vh,120px);
+  max-width:900px;
+}
+.hero h1{
+  color:var(--cream);font-size:clamp(40px,6.4vw,86px);
+  line-height:1.08;letter-spacing:.01em;font-weight:500;margin:22px 0 26px;
+}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero p{
+  color:rgba(244,238,225,.85);max-width:520px;font-size:18px;
+  font-weight:300;margin-bottom:44px;
+}
+.btn{
+  display:inline-block;border:1px solid var(--gold-soft);
+  color:var(--gold-soft);padding:17px 44px;
+  font-size:14px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;background:transparent;cursor:pointer;
+  transition:background .5s ease,color .5s ease,border-width .15s ease,padding .5s ease;
+}
+.btn:hover{background:var(--gold-soft);color:var(--emerald-deep);border-width:2px;padding:16px 43px}
+.btn.solid{background:var(--gold-soft);color:var(--emerald-deep)}
+.btn.solid:hover{background:transparent;color:var(--gold-soft)}
+.scroll-hint{
+  position:absolute;right:clamp(22px,6vw,90px);bottom:56px;z-index:2;
+  writing-mode:vertical-rl;font-size:11px;letter-spacing:.4em;
+  text-transform:uppercase;color:rgba(244,238,225,.55);
+}
+.scroll-hint::after{
+  content:"";display:block;width:1px;height:56px;background:var(--line-light);margin:14px auto 0;
+}
+
+/* ---------- fade-in ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.1s}
+.reveal[data-d="2"]{transition-delay:.2s}
+.reveal[data-d="3"]{transition-delay:.3s}
+.reveal[data-d="4"]{transition-delay:.4s}
+
+/* ---------- sections ---------- */
+section{padding:clamp(90px,13vh,150px) 0}
+.sec-head{display:flex;align-items:baseline;gap:28px;margin-bottom:clamp(48px,7vh,84px);flex-wrap:wrap}
+.sec-head h2{font-size:clamp(32px,4.2vw,56px);line-height:1.15}
+.sec-num{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:20px}
+
+/* philosophy — asymmetric grid */
+.philo{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,100px);align-items:start}
+.philo-lead{font-family:var(--serif);font-size:clamp(24px,2.6vw,34px);line-height:1.45;font-weight:400;color:var(--ink)}
+.philo-lead em{color:var(--emerald);font-style:italic}
+.philo-side{font-size:17px;color:#4a5154;font-weight:300;border-left:1px solid var(--line);padding-left:34px}
+.philo-side p+p{margin-top:22px}
+.philo-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(56px,8vh,90px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:36px 10px;text-align:center}
+.stat+.stat{border-left:1px solid var(--line-light)}
+.stat b{font-family:var(--serif);font-weight:500;font-size:clamp(34px,3.4vw,50px);color:var(--emerald);display:block}
+.stat span{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#6b7376}
+
+/* ---------- services ---------- */
+.services{background:var(--emerald-deep);color:var(--cream)}
+.services .sec-head h2{color:var(--cream)}
+.services .wrap{max-width:1360px}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,110px);align-items:center;padding:clamp(48px,7vh,76px) 0;border-top:1px solid var(--line-light)}
+.svc:first-of-type{border-top:0;padding-top:0}
+.svc:nth-child(even) .svc-media{order:2}
+.svc-media{position:relative;overflow:hidden}
+.svc-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.22,.61,.21,1)}
+.svc-media:hover img{transform:scale(1.045)}
+.svc-media::after{content:"";position:absolute;inset:14px;border:1px solid rgba(216,192,138,.35);pointer-events:none}
+.svc-media.tall{aspect-ratio:4/5}
+.svc-media.wide{aspect-ratio:5/4}
+.svc h3{font-size:clamp(26px,2.8vw,38px);color:var(--cream);margin:16px 0 18px;line-height:1.25}
+.svc .brands{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin:22px 0 6px;font-weight:500}
+.svc p{color:rgba(244,238,225,.78);font-weight:300;font-size:17px;max-width:480px}
+.svc-price{font-family:var(--serif);font-size:24px;color:var(--gold-soft);margin-top:26px}
+.svc-price small{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,238,225,.5);margin-left:10px}
+
+/* ---------- team ---------- */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(26px,3vw,44px)}
+.master{text-align:left}
+.master-photo{
+  aspect-ratio:3/4;background:var(--emerald);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+}
+.master-photo::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+}
+.master-photo::after{content:"";position:absolute;inset:12px;border:1px solid rgba(216,192,138,.4)}
+.master-photo span{
+  font-family:var(--serif);font-size:clamp(56px,5vw,76px);color:var(--gold-soft);
+  font-style:italic;position:relative;z-index:1;
+}
+.master h3{font-size:22px;margin-bottom:4px}
+.master .role{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.master p{font-size:15.5px;line-height:1.7;color:#565e61;font-weight:300}
+.master .cert{margin-top:12px;font-size:13px;letter-spacing:.06em;color:#8a9093;border-top:1px solid var(--line-light);padding-top:12px}
+
+/* ---------- gallery ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,2.4vw,32px)}
+.g-item{position:relative;overflow:hidden}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.22,.61,.21,1)}
+.g-item:hover img{transform:scale(1.05)}
+.g-item figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:20px 24px;
+  background:rgba(8,36,25,.55);color:var(--cream);font-size:13px;
+  letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  transform:translateY(100%);transition:transform .6s ease;
+}
+.g-item:hover figcaption{transform:none}
+.g-1{grid-column:span 7;aspect-ratio:16/10}
+.g-2{grid-column:span 5;aspect-ratio:4/5}
+.g-3{grid-column:span 5;aspect-ratio:4/5}
+.g-4{grid-column:span 7;aspect-ratio:16/10}
+.gallery-note{margin-top:34px;font-size:14px;letter-spacing:.1em;color:#8a9093;text-align:center}
+
+/* ---------- booking ---------- */
+.booking{background:var(--emerald-deep);color:var(--cream);text-align:center}
+.booking h2{color:var(--cream);font-size:clamp(32px,4.4vw,58px);line-height:1.2;max-width:760px;margin:18px auto 26px}
+.booking h2 em{color:var(--gold-soft);font-style:italic}
+.booking p{color:rgba(244,238,225,.72);max-width:540px;margin:0 auto 46px;font-weight:300}
+.booking .contacts{
+  display:flex;justify-content:center;gap:clamp(30px,6vw,80px);flex-wrap:wrap;
+  margin-top:70px;padding-top:44px;border-top:1px solid var(--line-light);
+}
+.booking .contacts div{font-size:15px}
+.booking .contacts b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;color:var(--gold-soft);margin-bottom:6px;letter-spacing:.04em}
+.booking .contacts span{color:rgba(244,238,225,.6);letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+
+/* ---------- footer ---------- */
+footer{background:var(--anthracite);color:rgba(244,238,225,.55);padding:38px 0;font-size:13.5px;letter-spacing:.08em}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+footer a{color:rgba(244,238,225,.75);text-decoration:none}
+footer a:hover{color:var(--gold-soft)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .philo{grid-template-columns:1fr}
+  .philo-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:30px}
+}
+@media (max-width:860px){
+  body{font-size:17px}
+  .nav-links,.nav-cta{display:none}
+  #burger{display:block}
+  nav.open .nav-links{
+    display:flex;flex-direction:column;gap:26px;position:fixed;inset:0;
+    background:rgba(8,36,25,.97);align-items:center;justify-content:center;
+  }
+  nav.open .nav-links a{font-size:18px}
+  .svc,.svc:nth-child(even) .svc-media{grid-template-columns:1fr;order:0}
+  .svc{display:block}
+  .svc-media{margin-bottom:30px}
+  .g-1,.g-2,.g-3,.g-4{grid-column:span 12;aspect-ratio:4/3}
+  .scroll-hint{display:none}
+}
+@media (max-width:560px){
+  .team-grid{grid-template-columns:1fr}
+  .philo-stats{grid-template-columns:1fr}
+  .stat+.stat{border-left:0;border-top:1px solid var(--line-light)}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav id="nav">
+  <a class="brand" href="#top">ÉMERAUDE<em>beauty atelier · moscow</em></a>
+  <ul class="nav-links">
+    <li><a href="#philosophy">Философия</a></li>
+    <li><a href="#services">Программы</a></li>
+    <li><a href="#team">Команда</a></li>
+    <li><a href="#gallery">Атмосфера</a></li>
+    <li><a href="#booking">Контакты</a></li>
+  </ul>
+  <a class="nav-cta" href="#booking">Записаться</a>
+  <button id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-media" id="heroMedia">
+    <img src="assets/hero.jpg" alt="Интерьер салона Émeraude — изумрудные стены, латунь, мягкий свет">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow reveal in">Салон красоты премиум-класса · Москва</div>
+    <h1>Красота, выдержанная <em>как искусство</em></h1>
+    <p>Частный ателье ухода на Патриарших. Программы, собранные под вашу кожу, волосы и ритм жизни.</p>
+    <a class="btn" href="#booking">Консультация и запись</a>
+  </div>
+  <div class="scroll-hint">листайте вниз</div>
+</header>
+
+<main>
+
+<!-- ФИЛОСОФИЯ -->
+<section id="philosophy">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><span class="rule"></span><h2>Философия дома</h2></div>
+    <div class="philo">
+      <p class="philo-lead reveal">Мы не работаем «прайс-листом». Каждая программа начинается с диагностики и собирается <em>под одного гостя</em> — как платье по мерке.</p>
+      <div class="philo-side reveal" data-d="1">
+        <p>Émeraude — это тишина вместо очередей, мастер вместо оператора и время, которое принадлежит только вам. Никаких параллельных записей: в зале в любой момент — не более трёх гостей.</p>
+        <p>Мы работаем исключительно на профессиональных линиях класса люкс — Sisley, Valmont, La Mer, Augustinus Bader, Kérastase — и никогда не экономим на дозировке, времени экспозиции и внимании.</p>
+      </div>
+    </div>
+    <div class="philo-stats reveal" data-d="2">
+      <div class="stat"><b>12</b><span>лет в Москве</span></div>
+      <div class="stat"><b>4 800+</b><span>авторских программ</span></div>
+      <div class="stat"><b>98%</b><span>гостей возвращаются</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОГРАММЫ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><span class="rule"></span><h2>Программы ухода</h2></div>
+
+    <article class="svc reveal">
+      <div class="svc-media tall"><img src="assets/spa.jpg" alt="Изумрудный мрамор спа-зоны"></div>
+      <div>
+        <div class="eyebrow">Эстетическая косметология</div>
+        <h3>Ритуал «Глубокое восстановление»</h3>
+        <p>Двухчасовая церемония для кожи, утомлённой городом: мягкое кислотное обновление, массаж лица по остеопатической технике и маска на основе Miracle Broth™. Кожа отдыхает — светится уже вечером.</p>
+        <div class="brands">La Mer · Valmont · Biologique Recherche</div>
+        <div class="svc-price">от 18 000 ₽<small>120 минут</small></div>
+      </div>
+    </article>
+
+    <article class="svc reveal">
+      <div class="svc-media wide"><img src="assets/process-makeup.jpg" alt="Мастер визажа за работой"></div>
+      <div>
+        <div class="eyebrow">Волосы</div>
+        <h3>Кутюр-протокол от креативного директора</h3>
+        <p>Авторская стрижка и окрашивание анализом прядки: перед работой мастер изучает структуру волоса под лампой и собирает формулу индивидуально. Результат — цвет, который живёт месяцами, и форма, которая ложится сама.</p>
+        <div class="brands">Kérastase · Oribe · Shu Uemura Art of Hair</div>
+        <div class="svc-price">от 14 000 ₽<small>от 90 минут</small></div>
+      </div>
+    </article>
+
+    <article class="svc reveal">
+      <div class="svc-media tall"><img src="assets/lounge.jpg" alt="Лаунж-зона салона в изумрудных тонах"></div>
+      <div>
+        <div class="eyebrow">Макияж и брови</div>
+        <h3>Архитектура лица</h3>
+        <p>Макияж, который не маскирует, а выстраивает: работаем с анатомией лица, светом и вашим гардеробом. Перед каждым визажем — короткая беседа, чтобы образ звучал именно вашим голосом.</p>
+        <div class="brands">Dior Backstage · Chanel Beauty · Tom Ford</div>
+        <div class="svc-price">от 9 000 ₽<small>от 60 минут</small></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- КОМАНДА -->
+<section id="team">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><span class="rule"></span><h2>Мастера</h2></div>
+    <div class="team-grid">
+      <div class="master reveal">
+        <div class="master-photo"><span>АВ</span></div>
+        <h3>Алина Волгина</h3>
+        <div class="role">Креативный директор · волосы</div>
+        <p>Амбассадор Kérastase в России, выпускница академий L'Oréal и Sassoon London. Ставит форму так, чтобы стрижка жила без укладки.</p>
+        <div class="cert">Sassoon ABC Cutting · Kérastase Ambassadorship</div>
+      </div>
+      <div class="master reveal" data-d="1">
+        <div class="master-photo"><span>МС</span></div>
+        <h3>Марина Соколова</h3>
+        <div class="role">Ведущий косметолог</div>
+        <p>Медицинское образование, сертификация Valmont и La Mer. Специализация — восстановление кожи после стресса, города и процедур.</p>
+        <div class="cert">Valmont Method Certified · La Mer Global</div>
+      </div>
+      <div class="master reveal" data-d="2">
+        <div class="master-photo"><span>ДК</span></div>
+        <h3>Дарья Ким</h3>
+        <div class="role">Визажист · артист по бровям</div>
+        <p>Работала backstage на неделях моды в Париже и Милане. Училась у ведущих визажистов Dior Backstage, ведёт авторский курс по цвету.</p>
+        <div class="cert">Dior Backstage Pro · Milan Fashion Week</div>
+      </div>
+      <div class="master reveal" data-d="3">
+        <div class="master-photo"><span>ЕЛ</span></div>
+        <h3>Ева Ланге</h3>
+        <div class="role">Спа-терапевт</div>
+        <p>Дипломы школ Бали и Баден-Бадена, 9 лет практики. Авторская техника глубокого расслабления, которую гости называют «лучший сон года».</p>
+        <div class="cert">Bali BISA International · Baden-Baden Spa School</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><span class="rule"></span><h2>Атмосфера и процесс</h2></div>
+    <div class="gallery-grid">
+      <figure class="g-item g-1 reveal"><img src="assets/process-makeup.jpg" alt="Работа визажиста"><figcaption>Визаж · деталь</figcaption></figure>
+      <figure class="g-item g-2 reveal" data-d="1"><img src="assets/process-brows.jpg" alt="Процедура архитектуры бровей"><figcaption>Архитектура бровей</figcaption></figure>
+      <figure class="g-item g-3 reveal"><img src="assets/spa.jpg" alt="Спa-зона"><figcaption>Спa-зона</figcaption></figure>
+      <figure class="g-item g-4 reveal" data-d="1"><img src="assets/hero.jpg" alt="Зал салона"><figcaption>Зал №1 · утренний свет</figcaption></figure>
+    </div>
+    <p class="gallery-note reveal">Съёмка — только атмосфера салона и процесс работы. Портфолио «до/после» показываем лично на консультации.</p>
+  </div>
+</section>
+
+<!-- ЗАПИСЬ -->
+<section class="booking" id="booking">
+  <div class="wrap">
+    <div class="eyebrow reveal">Приватная запись</div>
+    <h2 class="reveal" data-d="1">Первый визит начинается <em>с беседы</em>, а не с кресла</h2>
+    <p class="reveal" data-d="2">Оставьте заявку — администратор свяжется с вами в течение часа, подберёт мастера и время. Консультация по программе — бесплатно.</p>
+    <a class="btn solid reveal" data-d="3" href="tel:+74950000000">Консультация и запись</a>
+    <div class="contacts reveal" data-d="4">
+      <div><b>+7 495 000-00-00</b><span>ежедневно 10:00–22:00</span></div>
+      <div><b>Малый Козихинский, 7</b><span>Патриаршие пруды</span></div>
+      <div><b>@emeraude.msk</b><span>telegram · whatsapp</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Émeraude Beauty Atelier</span>
+    <span>Москва · Патриаршие пруды · <a href="tel:+74950000000">+7 495 000-00-00</a></span>
+  </div>
+</footer>
+
+<script>
+/* progress bar */
+const progress = document.getElementById('progress');
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+}, {passive:true});
+
+/* nav on scroll */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', scrollY > 60);
+}, {passive:true});
+
+/* hero parallax — capped at 18% shift */
+const heroMedia = document.getElementById('heroMedia');
+const hero = document.querySelector('.hero');
+addEventListener('scroll', () => {
+  const y = Math.min(scrollY, hero.offsetHeight);
+  heroMedia.style.transform = 'translate3d(0,' + (y * 0.18) + 'px,0)';
+}, {passive:true});
+
+/* fade-in on scroll */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, {threshold: 0.15, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* mobile menu */
+document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>
