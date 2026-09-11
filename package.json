@@ -1,0 +1,28 @@
+{
+  "name": "studio-krasotj",
+  "version": "1.0.0",
+  "description": "Premium beauty salon website - Émeraude",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "next": "14.2.4",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "swiper": "^11.1.15"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.2",
+    "@types/react": "19.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.3",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.14",
+    "typescript": "7.0.2"
+  }
+}

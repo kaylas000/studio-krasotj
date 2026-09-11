@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables -- These are set via next/font in layout.tsx */
+:root {
+  --color-primary: #0A4D3C;
+  --color-primary-hover: #146B5A;
+  --color-accent: #D4B896;
+  --color-accent-hover: #E8D4B9;
+  --color-background: #FDFBF7;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-muted: #5A5A5A;
+  --color-border: rgba(26, 26, 26, 0.4);
+  --color-focus: #0A4D3C;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #121212;
+    --color-surface: #1A1A1A;
+    --color-text: #FDFBF7;
+    --color-text-muted: #A0A0A0;
+    --color-border: rgba(253, 251, 247, 0.4);
+    --color-focus: #D4B896;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-background text-text font-body antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01", "liga", "calt", "kern";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-primary tracking-tight;
+  }
+  
+  p, li, span, div { @apply text-body leading-relaxed; }
+  .lead { @apply text-lead text-text-muted; }
+  .caption { @apply text-caption text-accent font-medium; }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-focus ring-offset-2 ring-offset-background;
+  }
+
+  .sr-only { @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0; clip: rect(0,0,0,0); }
+}
+
+@layer components {
+  .divider {
+    @apply w-full border-t border-hairline my-phi4;
+  }
+  
+  .section {
+    @apply py-section-y px-section-x max-w-full mx-auto;
+  }
+
+  .bg-marble {
+    background-image: url('/images/marble-texture.svg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    @media (prefers-reduced-motion: reduce) {
+      background-attachment: scroll;
+    }
+  }
+
+  .btn {
+    @apply relative inline-flex items-center justify-center font-body font-medium transition-all duration-300 ease-out-expo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-fill-animation {
+    @apply relative overflow-hidden z-0;
+    &::before {
+      content: '';
+      @apply absolute inset-0 bg-accent scale-x-0 origin-left transition-transform duration-300 ease-out-expo z-[-1];
+    }
+   :hover::before, &:focus-visible::before {
+      @apply scale-x-100 origin-left;
+    }
+   :hover, &:focus-visible {
+      @apply text-background;
+    }
+  }
+
+  .divider {
+    @apply w-full border-t border-hairline my-phi4;
+  }
+}
+
+@layer utilities {
+  .btn-fill-animation {
+    @apply relative overflow-hidden z-0;
+    &::before {
+      content: '';
+      @apply absolute inset-0 bg-accent scale-x-0 origin-left transition-transform duration-300 ease-out-expo z-[-1];
+    }
+   :hover::before, &:focus-visible::before {
+      @apply scale-x-100 origin-left;
+    }
+   :hover, &:focus-visible {
+      @apply text-background;
+    }
+  }
+}
